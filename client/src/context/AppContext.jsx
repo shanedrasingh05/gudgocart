@@ -1,19 +1,20 @@
 import React, { createContext, useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { dummyProducts } from "../assets/assets";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-  const currency = import.meta.env.VITE_CURRENCY; 
-
+  const currency = import.meta.env.VITE_CURRENCY;
   const navigate = useNavigate();
+
   const [user, setUser] = useState(null);
   const [isSeller, setIsSeller] = useState(false);
   const [showUserLogin, setShowUserLogin] = useState(false);
   const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState({}); 
+  const [cartItems, setCartItems] = useState({});
+  const [searchQuery, setSearchQuery] = useState({});
 
   // Fetch all products
   const fetchProducts = async () => {
@@ -52,7 +53,7 @@ export const AppContextProvider = ({ children }) => {
       }
     }
     setCartItems(cartData);
-    toast.success("Removed from Cart");
+    toast.error("Removed from Cart");
   };
 
   useEffect(() => {
@@ -75,12 +76,11 @@ export const AppContextProvider = ({ children }) => {
     setCartItems,
     updateCartItem,
     removeFromProduct,
+    searchQuery,
+    setSearchQuery,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
 export const useAppContext = () => useContext(AppContext);
-
-
-

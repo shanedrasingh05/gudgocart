@@ -7,13 +7,8 @@ const Footer = () => {
     <div className="px-6 md:px-16 lg:px-24 xl:px-32 mt-24 bg-primary/10">
       <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-500/30 text-gray-500">
         <div>
-          {/* <img
-            className="w-34 md:w-32"
-            src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoColored.svg"
-            alt="dummyLogoColored"
-          /> */}
+         
           <svg
-            // className="h-9"
             className="w-34 md:w-32"
             viewBox="0 0 300 100"
             xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +25,7 @@ const Footer = () => {
               <tspan fill="#000000">&#9825;dGoCart</tspan>
             </text>
           </svg>
+          
           <p className="max-w-[410px] mt-1">
             We deliver fresh groceries and snacks straight your door. Trusted by thousands, We aim to make your shooping
             experience simple and affordable.
