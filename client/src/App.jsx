@@ -9,6 +9,8 @@ import Login from './components/Login';
 import AllProduct from './pages/AllProduct';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProductCategory from './pages/ProductCategory';
+import ProductDetails from './pages/ProductDetails';
 const App = () => {
 
   const isSellerPath = useLocation().pathname.includes("seller");
@@ -31,6 +33,8 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/products" element={<AllProduct />} />
+          <Route exact path="/products/:category" element={<ProductCategory />} />
+          <Route exact path="/products/:category/:id" element={<ProductDetails />} />
         </Routes>
       </div>
       {!isSellerPath && <Footer />}

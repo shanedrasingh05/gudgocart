@@ -5,7 +5,16 @@ import { useAppContext } from "../context/AppContext";
 
 function Navbar() {
   const [open, setOpen] = React.useState(false);
-  const { user, setUser, setShowUserLogin, navigate, searchQuery, setSearchQuery } = useAppContext();
+  const {
+    user,
+    setUser,
+    setShowUserLogin,
+    navigate,
+    searchQuery,
+    setSearchQuery,
+    getCartAmount,
+    getCartCount,
+  } = useAppContext();
 
 
   const logout = async ()=>{
@@ -61,7 +70,8 @@ function Navbar() {
         <NavLink to="contacts">Contact</NavLink>
 
         <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
-          <input onChange={(e) => setSearchQuery(e.target.value)}
+          <input
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"
             type="text"
             placeholder="Search products"
@@ -80,7 +90,7 @@ function Navbar() {
           />
 
           <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">
-            3
+            {getCartCount()}
           </button>
         </div>
 
@@ -115,13 +125,30 @@ function Navbar() {
         )}
       </div>
 
-      <button
-        onClick={() => setOpen(!open)}
-        aria-label="Menu"
-        className="sm:hidden"
-      >
-        <img src={assets.menu_icon} alt="menu" />
-      </button>
+      <div className="flex items-center gap-6 sm:hidden">
+        <div
+          onClick={() => navigate("/cart")}
+          className="relative cursor-pointer"
+        >
+          <img
+            src={assets.nav_cart_icon}
+            alt="cart"
+            className="w-6 opacity-80"
+          />
+
+          <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">
+            {getCartCount()}
+          </button>
+        </div>
+
+        <button
+          onClick={() => setOpen(!open)}
+          aria-label="Menu"
+          className=""
+        >
+          <img src={assets.menu_icon} alt="menu" />
+        </button>
+      </div>
 
       {/* Mobile Menu */}
       {open && (
