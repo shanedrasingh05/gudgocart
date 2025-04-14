@@ -56,6 +56,17 @@ export const AppContextProvider = ({ children }) => {
     toast.error("Removed from Cart");
   };
 
+   const removeFromProduct = (itemId) => {
+     let cartData = structuredClone(cartItems);
+     if (cartData[itemId]) {
+       cartData[itemId] -= 1;
+       if (cartData[itemId] === 0) {
+         delete cartData[itemId];
+       }
+     }
+     setCartItems(cartData);
+     toast.error("Removed from Cart");
+   };
   // Get cart item count
   const getCartCount = () => {
     let totalCount = 0;
@@ -101,6 +112,7 @@ export const AppContextProvider = ({ children }) => {
     setSearchQuery,
     getCartAmount,
     getCartCount,
+    removeFromProduct,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
@@ -155,17 +167,17 @@ export const useAppContext = () => useContext(AppContext);
 //   };
 
 //   // Remove product from cart
-//   const removeFromProduct = (itemId) => {
-//     let cartData = structuredClone(cartItems);
-//     if (cartData[itemId]) {
-//       cartData[itemId] -= 1;
-//       if (cartData[itemId] === 0) {
-//         delete cartData[itemId];
-//       }
-//     }
-//     setCartItems(cartData);
-//     toast.error("Removed from Cart");
-//   };
+  // const removeFromProduct = (itemId) => {
+  //   let cartData = structuredClone(cartItems);
+  //   if (cartData[itemId]) {
+  //     cartData[itemId] -= 1;
+  //     if (cartData[itemId] === 0) {
+  //       delete cartData[itemId];
+  //     }
+  //   }
+  //   setCartItems(cartData);
+  //   toast.error("Removed from Cart");
+  // };
 
 // // get cart Item count
 

@@ -36,16 +36,16 @@ const ProductCard = ({ product }) => {
                   alt=""
                 />
               ))}
-
+  
             <p>(4)</p>
           </div>
           <div className="flex items-end justify-between mt-3">
-            <p className="flex items-center gap-2 mr-2">
-              <span className="md:text-xl text-base font-medium text-primary">
-                {currency} ${product.offerPrice}
+            <p className="flex items-center flex-col mr-2">
+              <span className="md:text-xl text-base font-medium text-primary flex flex-row w-16">
+                {currency} {product.offerPrice}
               </span>
-              <span className="text-gray-500/60 md:text-sm text-xs line-through">
-                {currency} ${product.price}
+              <span className="text-gray-500/60 md:text-sm text-xs line-through flex flex-row w-16">
+                {currency} {product.price}
               </span>
             </p>
 
