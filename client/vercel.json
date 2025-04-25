@@ -1,7 +1,3 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
-
-  "builds": [{ "src": "vite build", "use": "@vercel/static-build" }],
-  "routes": [{ "src": "/(.*)", "dest": "/" }],
-  "outputDirectory": "dist"
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
